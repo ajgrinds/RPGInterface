@@ -24,6 +24,7 @@ public abstract class Creature {
     public int getCurrentHealth() { return currentHealth; }
     public int getLevel() { return level; }
     public int getToughness() { return toughness; }
+    public int getAttack() { return attack; }
 
     public void setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
@@ -45,5 +46,11 @@ public abstract class Creature {
     {
         this.currentHealth -= amount;
         return this.isDead();
+    }
+
+    public boolean attack(Creature creature)
+    {
+        creature.damage(Math.max((int) (this.attack - (creature.getToughness() * 0.5)), 1));
+        return true;
     }
 }

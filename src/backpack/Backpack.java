@@ -4,6 +4,9 @@ import items.Item;
 import items.Weapon;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Backpack {
     private int size;
@@ -48,6 +51,11 @@ public class Backpack {
     public void changeAmmo(int ammo, int type) { this.ammo[type] += ammo; }
 
     public ArrayList<Item> getInside() { return inside; }
+
+    public List<Item> getWeapons()
+    {
+        return this.inside.stream().filter(item -> item instanceof Weapon).collect(Collectors.toList());
+    }
 
     public String toString() {
         StringBuilder str = new StringBuilder();

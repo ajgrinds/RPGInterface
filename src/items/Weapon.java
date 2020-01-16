@@ -40,7 +40,9 @@ public class Weapon extends Item {
             else
                 this.currentAmmo -= 1;
         }
-        if (Math.random() > accuracy)
+        double hit = Math.random();
+        System.out.println(hit);
+        if (hit < accuracy)
         {
             creature.damage(Math.max((int) (damage - (creature.getToughness() * 0.5)), 1));
             return true;
@@ -62,9 +64,9 @@ public class Weapon extends Item {
         String str = this.name;
         str += "\n" + this.description;
         if (this.ammoType == -1)
-            str += "\nDamage: " + this.damage + " Worth: " + this.worth + " Rarity: " + this.getRarity();
+            str += "\nDamage: " + this.damage + " Accuracy: " + this.accuracy + " Worth: " + this.worth + " Rarity: " + this.getRarity();
         else
-            str += "\nDamage: " + this.damage + " Current ammo: " + this.currentAmmo + " Max ammo: " + this.maxAmmo +
+            str += "\nDamage: " + this.damage + " Accuracy: " + this.accuracy + " Current ammo: " + this.currentAmmo + " Max ammo: " + this.maxAmmo +
                 " Worth: " + this.worth + " Rarity: " + this.getRarity();
         return str;
     }

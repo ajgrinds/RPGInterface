@@ -35,6 +35,7 @@ public abstract class Item {
     public int getSize() { return this.size; }
     public int getWorth() { return this.worth; }
     public String getRarity() { return rarities[this.rarity]; }
+    public boolean getEquipable() { return this.equipable; }
 }
 
 

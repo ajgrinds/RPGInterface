@@ -4,6 +4,9 @@ import backpack.Backpack;
 import items.Item;
 import items.Weapon;
 
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 public class Player extends Creature{
     private int hunger;
     private int money;
@@ -47,6 +50,8 @@ public class Player extends Creature{
     }
 
     public int getMoney() { return this.money; }
+
+    public Weapon getEquipped() { return equipped; }
 
     public Backpack getBackpack() { return this.backpack; }
 
@@ -115,6 +120,18 @@ public class Player extends Creature{
         }
         else
             return false;
+    }
+
+    public boolean equip(int index)
+    {
+        equipped = (Weapon) backpack.getWeapons().get(index);
+        return true;
+    }
+
+
+    public boolean attack(Creature creature)
+    {
+        return equipped.shoot(creature);
     }
 
 }
